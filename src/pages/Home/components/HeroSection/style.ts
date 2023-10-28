@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const HeroBackgroundImage = styled.img`
+  position: absolute;
+`
+
 export const HeroContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
