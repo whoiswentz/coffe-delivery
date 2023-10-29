@@ -1,13 +1,10 @@
 import { ShoppingCart } from "@phosphor-icons/react";
-import background from '../../../../assets/background.png';
 import heroImage from '../../../../assets/heroImage.png';
 import { RoudedIconContainer } from "../../../../components/Icons";
 import { Text, Title } from "../../../../components/Typography";
 
 import {
-  Container,
-  HeroBackgroundImage,
-  HeroContainer,
+  Container, HeroContainer,
   HeroImageContainer,
   HeroItemsContainer,
   HeroTextContainer,
@@ -17,15 +14,15 @@ import {
 export function HeroSection() {
   return (
     <Container>
-      <HeroBackgroundImage src={background} />
+      {/* <HeroBackgroundImage src={background} /> */}
       <HeroContainer>
       <HeroTextContainer>
         <Title color="gray-900" fontSize='title-xl' fontWeight={800}>
-          Find the perfect coffee for any time of day
-        </Title>
-        <Text fontSize='text-m' fontWeight={400}>
-          With Coffee Delivery you receive your coffee wherever you are, anytime
-        </Text>
+            Find the perfect coffee for any time of day
+          </Title>
+          <Text fontSize='text-m' fontWeight={400}>
+            With Coffee Delivery you receive your coffee wherever you are, anytime
+          </Text>
       </HeroTextContainer>
       <HeroItemsContainer>
         <IconContainer>
