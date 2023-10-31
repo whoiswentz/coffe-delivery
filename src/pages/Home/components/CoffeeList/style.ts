@@ -10,9 +10,10 @@ export const CoffeeListContainer = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 2rem;
-  row-gap: 3.5rem;
+  column-gap: 3rem;
+  row-gap: 6rem;
   margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
 `
 
 export const CoffeeCardContainer = styled.div`
@@ -24,8 +25,9 @@ export const CoffeeCardContainer = styled.div`
 
   padding: 1.25rem;
 
-  background-color: ${({theme}) => theme.color["gray-200"]};
   border-radius: 6px 36px;
+
+  background-color: ${({theme}) => theme.color["gray-200"]};
 
   img {
     width: 7.5rem;

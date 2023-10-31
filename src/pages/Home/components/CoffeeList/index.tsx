@@ -1,12 +1,14 @@
 import { ShoppingCart } from "@phosphor-icons/react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { QuantityInput } from "../../../../components/QuantityInput";
 import { Text, Title } from "../../../../components/Typography";
-import { Coffee, coffees } from "../../../../data/coffees";
+import { addToCard } from "../../../../store/cartSlice";
+import { Coffee, coffeSelect } from "../../../../store/coffeeSlice";
 import { AddCartWrapper, CoffeeCardContainer, CoffeeCardFooter, CoffeeListContainer, Container, Tags } from "./style";
 
 export function CoffeeList() {
-  
+  const coffes = useSelector(coffeSelect)
   
   return (
     <Container>
@@ -14,7 +16,7 @@ export function CoffeeList() {
         Our Coffees
       </Title>
       <CoffeeListContainer>
-        {coffees.map(coffee => <CoffeeCard coffee={coffee}/>)}
+        {coffes.map(coffee => <CoffeeCard coffee={coffee}/>)}
       </CoffeeListContainer>
     </Container>
   )
@@ -27,6 +29,12 @@ type CoffeeCardProps = {
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
   const [quantity, setQuantity] = useState(1)
 
+  const dispatch = useDispatch()
+
+  const formattedPrice = coffee.price.toLocaleString('pt-BR', {
+    minimumFractionDigits: 2,
+  })
+
   function handleIncrease() {
     setQuantity((state) => state + 1)
   }
@@ -35,9 +43,10 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
     setQuantity((state) => state - 1)
   }
 
-  const formattedPrice = coffee.price.toLocaleString('pt-BR', {
-    minimumFractionDigits: 2,
-  })
+  function handleAddToCard() {
+    dispatch(addToCard({ ...coffee, quantity }))
+    setQuantity(1)
+  }
 
   return (
     <CoffeeCardContainer>
@@ -59,7 +68,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
             onDecrease={handleDecrease}
             quantity={quantity}
           />
-          <button onClick={() => {}}>
+          <button onClick={() => handleAddToCard()}>
             <ShoppingCart weight="fill" size={22} />
           </button>
         </AddCartWrapper>

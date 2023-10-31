@@ -1,11 +1,13 @@
-import american from '../assets/coffes/american.png'
-import arabic from '../assets/coffes/arabic.png'
-import capuccino from '../assets/coffes/capuccino.png'
-import coffeeWithMilk from '../assets/coffes/coffee-with-milk.png'
-import coldBrew from '../assets/coffes/cold-brew.png'
-import creamyEspresso from '../assets/coffes/creamy-espresso.png'
-import espresso from '../assets/coffes/espresso.png'
-
+import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuid } from 'uuid';
+import { RootState } from ".";
+import american from '../assets/coffes/american.png';
+import arabic from '../assets/coffes/arabic.png';
+import capuccino from '../assets/coffes/capuccino.png';
+import coffeeWithMilk from '../assets/coffes/coffee-with-milk.png';
+import coldBrew from '../assets/coffes/cold-brew.png';
+import creamyEspresso from '../assets/coffes/creamy-espresso.png';
+import espresso from '../assets/coffes/espresso.png';
 
 export type Coffee = {
   id: string
@@ -16,9 +18,9 @@ export type Coffee = {
   price: number
 }
 
-export const coffees: Coffee[] = [
+const initialState: Coffee[] = [
   {
-    id: new Date().toISOString(),
+    id: uuid(),
     image: espresso,
     tags: ['tradicional'],
     name: 'Tradicional Espresso',
@@ -26,7 +28,7 @@ export const coffees: Coffee[] = [
     price: 9.90
   },
   {
-    id: new Date().toISOString(),
+    id: uuid(),
     image: american,
     tags: ['tradicional'],
     name: 'American Espresso',
@@ -34,7 +36,7 @@ export const coffees: Coffee[] = [
     price: 9.90
   },
   {
-    id: new Date().toISOString(),
+    id: uuid(),
     image: capuccino,
     tags: ['tradicional', 'milk'],
     name: 'Capuccino',
@@ -42,7 +44,7 @@ export const coffees: Coffee[] = [
     price: 9.90
   },
   {
-    id: new Date().toISOString(),
+    id: uuid(),
     image: arabic,
     tags: ['tradicional'],
     name: 'Arabic',
@@ -50,7 +52,7 @@ export const coffees: Coffee[] = [
     price: 9.90
   },
   {
-    id: new Date().toISOString(),
+    id: uuid(),
     image: coffeeWithMilk,
     tags: ['tradicional', 'milk'],
     name: 'Coffee with milk',
@@ -58,7 +60,7 @@ export const coffees: Coffee[] = [
     price: 9.90
   },
   {
-    id: new Date().toISOString(),
+    id: uuid(),
     image: coldBrew,
     tags: ['tradicional', 'cold'],
     name: 'Cold Brew',
@@ -66,7 +68,7 @@ export const coffees: Coffee[] = [
     price: 9.90
   },
   {
-    id: new Date().toISOString(),
+    id: uuid(),
     image: creamyEspresso,
     tags: ['tradicional'],
     name: 'Creamy Espresso',
@@ -74,3 +76,12 @@ export const coffees: Coffee[] = [
     price: 9.90
   }
 ]
+
+export const coffeeSlice = createSlice({
+  name: 'coffee',
+  initialState,
+  reducers: {}
+})
+
+export const coffeSelect = (state: RootState) => state.coffe
+export default coffeeSlice.reducer
